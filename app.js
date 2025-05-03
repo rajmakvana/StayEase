@@ -88,6 +88,10 @@ app.use('/', userRouter );
 // *  actual Middleware routes
 
 
+app.all('*' , (req , res , next) => {
+    next(new ExpressError (404 , " Page Not Found !"))
+})
+
 app.use((err , req , res , next) => {
     let {statusCode = 500 , message = "Somthing went WRONG !" } = err;
     // res.status(statusCode).send(message);
@@ -96,10 +100,6 @@ app.use((err , req , res , next) => {
 
 
 
-
-app.all('*' , (req , res , next) => {
-    next(new ExpressError (404 , " Page Not Found !"))
-})
 
 app.listen(port , () => {
     console.log(`Server is running on http://localhost:${port}/Listings`);
