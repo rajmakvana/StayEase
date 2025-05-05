@@ -21,13 +21,14 @@
       </div>
 
       <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
-          <input class="form-control search-input me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" role="search" action="/Listings/search" method="post">
+          <input class="form-control search-input me-2" id="search-box" placeholder="Search" aria-label="Search" name="title">
+          <div id="suggestions" class="suggestion-box"></div>
           <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
         </form>
       </div>
       
-      <div class="navbar-nav ms-auto  bg-light">
+      <div class="navbar-nav ms-auto bg-light">
         
           <a class="nav-link" href="/Listings/new">Add new Listing</a>
           <% if(!currUser) {%>
@@ -43,3 +44,35 @@
     </div>
   </div>
 </nav>
+
+<script>
+
+  const searchBox = document.getElementById("search-box");
+  const suggestionsDiv = document.getElementById("suggestions");
+  const searchBtn = document.querySelector(".btn-search");
+
+  searchBox.addEventListener("input", async () => {
+    const query = searchBox.value.trim();
+    if (!query) {
+      suggestionsDiv.innerHTML = "";
+      return;
+    }
+
+    const res = await fetch(`/search-suggestions?q=${encodeURIComponent(query)}`);
+    const suggestions = await res.json();
+
+    suggestionsDiv.innerHTML = suggestions.map(item =>
+      `<div class="suggestion-item">${item}</div>`
+    ).join("");
+
+    // Add click handler
+    document.querySelectorAll(".suggestion-item").forEach(el => {
+      el.addEventListener("click", () => {
+        searchBox.value = el.textContent;
+        suggestionsDiv.innerHTML = "";
+        searchBtn.click();
+      });
+    });
+
+  });
+</script>

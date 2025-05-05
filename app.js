@@ -3,6 +3,8 @@ if(process.env.NODE_ENV != "production" ){
     require('dotenv').config(); 
 }
 
+const Listing = require("./models/listings");
+
 const express =  require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -91,6 +93,26 @@ app.use('/Listings/:id/review' , reviewRouter);
 app.use('/Listings', ListingRouter);
 app.use('/', userRouter );
 
+// search listings 
+
+app.get('/search-suggestions', async (req, res) => {
+  const query = req.query.q;
+
+  if (!query) return res.json([]);
+
+      const results = await Listing.find({
+          location : { $regex: query, $options: 'i' } // case-insensitive match
+      }).limit(5); // limit suggestions
+      res.json(results.map(item => item.title));
+ 
+});
+
+app.post("/Listings/search" , async (req , res ) => {
+    let title =  req.body.title;
+    const listing = await Listing.find({title});
+    console.log(listing);
+    return res.render("listings/show.ejs", { listing : listing[0] });
+});
 
 // *  actual Middleware routes
 
