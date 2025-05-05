@@ -1,16 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-const wrapAsync = require("../utils/wrapAsync");
-const ExpressError = require("../utils/ExpressError");
+const wrapAsync = require("../utils/wrapAsync.js");
+const ExpressError = require("../utils/ExpressError.js");
 const { listingSchema } = require("../schema.js");
 const Listing = require("../models/listings");
 const { isLogedIn, isOwner } = require("../middleWare.js");
 
 
+const {storage} = require("../CloudConfig.js");
+
 //file uploading 
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const upload = multer({ storage })
 
 //* MiddleWare
 
@@ -37,8 +39,9 @@ router.get("/new", isLogedIn,listingController.renderNewForm );
 router.post(
   "/",
   isLogedIn,
+  upload.single('listing[image]'),
   validateSchema,
-  wrapAsync(listingController.createListing)
+  listingController.createListing
 );
 
 
@@ -63,6 +66,7 @@ router.put(
   "/:id",
   isLogedIn,
   isOwner,
+  upload.single('listing[image]'),
   validateSchema,
   wrapAsync(listingController.updateListing)
 );
