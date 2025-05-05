@@ -110,7 +110,6 @@ app.get('/search-suggestions', async (req, res) => {
 app.post("/Listings/search" , async (req , res ) => {
     let title =  req.body.title;
     const listing = await Listing.find({title});
-    console.log(listing);
     return res.render("listings/show.ejs", { listing : listing[0] });
 });
 
