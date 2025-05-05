@@ -32,6 +32,11 @@ const ListingRouter = require('./routes/listings.js');
 const reviewRouter = require('./routes/review.js');
 const userRouter = require('./routes/user.js')
 
+// env file setup
+if(process.env.NODE_ENV != "production" ){
+    require('dotenv').config(); 
+}
+
 //define sessions
 
 const sessionOptions = {

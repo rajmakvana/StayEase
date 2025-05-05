@@ -7,6 +7,11 @@ const { listingSchema } = require("../schema.js");
 const Listing = require("../models/listings");
 const { isLogedIn, isOwner } = require("../middleWare.js");
 
+
+//file uploading 
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
+
 //* MiddleWare
 
 const validateSchema = (req, res, next) => {
