@@ -8,7 +8,9 @@ body{
 
 /* input filed suggestions */
 
-.navbar
+.navbar{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.797);
+}
 
 /* Input Field */
 #search-box {
@@ -274,6 +276,10 @@ body{
   .alert-success.slide-up {
     animation: slideUpAnimation 0.5s ease-in-out forwards;
   }
+
+  .bg-color{
+    background-color: white;
+  }
   
   @keyframes slideDownAnimation {
     0% {
@@ -294,7 +300,8 @@ body{
   }
 
   @media (min-width : 768px) {
-        .navbar-nav{
+        .bg-color{
             background-color: white !important;
+            border: none;
         }
   }
