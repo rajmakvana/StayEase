@@ -347,6 +347,78 @@ const sampleListings = [
     location: "Costa Rica",
     country: "Costa Rica",
   },
+  {
+    title: "Heritage Haveli in Jaipur",
+    description:
+      "Experience royal living in a traditional Rajasthani haveli with intricate architecture and vibrant surroundings.",
+    image: {
+      filename: "jaipur-haveli.jpg",
+      url: "https://images.unsplash.com/photo-1593697820676-e181c47947aa"
+    },
+    price: 1200,
+    location: "Jaipur",
+    country: "India"
+  },
+  {
+    title: "Backwater Houseboat Retreat",
+    description:
+      "Sail through the serene backwaters of Kerala in a private houseboat with authentic cuisine and scenic views.",
+    image: {
+      filename: "kerala-houseboat.jpg",
+      url: "https://images.unsplash.com/photo-1583142305726-319b5b54f1f4"
+    },
+    price: 1500,
+    location: "Alleppey",
+    country: "India"
+  },
+  {
+    title: "Goa Beach Bungalow",
+    description:
+      "Relax in a tropical beach bungalow just steps away from the Arabian Sea. Perfect for sun, surf, and seafood.",
+    image: {
+      filename: "goa-beach.jpg",
+      url: "https://images.unsplash.com/photo-1548013146-72479768bada"
+    },
+    price: 1600,
+    location: "Goa",
+    country: "India"
+  },
+  {
+    title: "Himalayan Mountain Cabin",
+    description:
+      "Retreat to a peaceful wooden cabin in the Himalayas, surrounded by snow-capped peaks and fresh mountain air.",
+    image: {
+      filename: "manali-cabin.jpg",
+      url: "https://images.unsplash.com/photo-1587049352849-fddc2f6f52f0"
+    },
+    price: 1800,
+    location: "Manali",
+    country: "India"
+  },
+  {
+    title: "Tea Estate Cottage",
+    description:
+      "Stay amidst lush green tea plantations in Munnar. A perfect getaway for nature lovers and peace seekers.",
+    image: {
+      filename: "munnar-tea.jpg",
+      url: "https://images.unsplash.com/photo-1596546742530-e84220eb9b36"
+    },
+    price: 1400,
+    location: "Munnar",
+    country: "India"
+  },
+  {
+    title: "Udaipur Lake View Suite",
+    description:
+      "Enjoy a tranquil stay overlooking Lake Pichola, with heritage charm and royal hospitality.",
+    image: {
+      filename: "udaipur-lake.jpg",
+      url: "https://images.unsplash.com/photo-1602524810073-66caa1c43ec3"
+    },
+    price: 1900,
+    location: "Udaipur",
+    country: "India"
+  }
 ];
 
 module.exports = { data: sampleListings };

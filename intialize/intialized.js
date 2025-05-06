@@ -3,7 +3,7 @@ const Listing =  require('../models/listings');
 const initData =  require('./data');
 
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/Airbnb');
+    await mongoose.connect(process.env.ATLASDB_URL);
 }
 
 main().then(() => {
@@ -13,7 +13,7 @@ main().then(() => {
 async function intialized() {
     await Listing.deleteMany();
     initData.data = initData.data.map( (data) => {
-        return {...data , owner : '6813b386050fe989cb513a75'}
+        return {...data , owner : '68199b8752e32098f44f31f1'}
     } );
     await Listing.insertMany(initData.data);
 }
