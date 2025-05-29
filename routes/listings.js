@@ -32,12 +32,12 @@ router.get("/", wrapAsync(listingController.index) );
 
 
 // * new route
-router.get("/new", isLogedIn,listingController.renderNewForm );
+router.get("/Listings/new", isLogedIn,listingController.renderNewForm );
 
 
 // * create route
 router.post(
-  "/",
+  "/Listings/",
   isLogedIn,
   upload.single('listing[image]'),
   validateSchema,
@@ -47,7 +47,7 @@ router.post(
 
 // * edit route 
 router.get(
-  "/:id/edit",
+  "/Listings/:id/edit",
   isLogedIn,
   isOwner,
   wrapAsync(listingController.renderEditForm)
@@ -56,14 +56,14 @@ router.get(
 
 // * show route
 router.get(
-  "/:id",
+  "/Listings/:id",
   wrapAsync(listingController.showListing)
 );
 
 
 // * upadate route
 router.put(
-  "/:id",
+  "/Listings/:id",
   isLogedIn,
   isOwner,
   upload.single('listing[image]'),
@@ -74,7 +74,7 @@ router.put(
 
 // * delete route
 router.delete(
-  "/:id",
+  "/Listings/:id",
   isLogedIn,
   isOwner,
   wrapAsync(listingController.destroyListing)

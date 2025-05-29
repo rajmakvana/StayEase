@@ -105,7 +105,7 @@ main().then(() => {
 //*  all routes use
 
 app.use('/Listings/:id/review' , reviewRouter);
-app.use('/Listings', ListingRouter);
+app.use('/', ListingRouter);
 app.use('/', userRouter );
 
 // search listings 

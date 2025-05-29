@@ -3,7 +3,7 @@ const Listing =  require('../models/listings');
 const initData =  require('./data');
 
 async function main() {
-    await mongoose.connect(process.env.ATLASDB_URL);
+    await mongoose.connect("mongodb+srv://rajmakvana07e:dbZtIDfnRju9vQqz@cluster0.7vlbcdv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 }
 
 main().then(() => {
@@ -11,7 +11,6 @@ main().then(() => {
 }).catch(err  => console.log(err));
 
 async function intialized() {
-    await Listing.deleteMany();
     initData.data = initData.data.map( (data) => {
         return {...data , owner : '68199b8752e32098f44f31f1'}
     } );
